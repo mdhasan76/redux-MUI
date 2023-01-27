@@ -1,10 +1,11 @@
 import './App.css';
-import { Typography } from '@mui/material';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/route';
 
 function App() {
   return (
     <div className="App">
-      <Typography variant='h4' component="h1" marginTop={10}>This Redux Start</Typography>
+      <RouterProvider router={router}/>
     </div>
   );
 }
