@@ -9,13 +9,19 @@ import  List  from '@mui/material/List';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../redux/productActionType/productActionType';
 import { useLocation } from 'react-router-dom';
+import { Badge } from '@mui/material';
 
 export default function MediaCard({data}) {
   const {pathname} = useLocation();
   const dispatch = useDispatch();
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, position: 'relative' }}>
+      <Badge badgeContent={data.quantity} color="primary" sx={{
+        position: 'absolute',
+        top: 10,
+        right: 10,
+      }}></Badge>
       <CardMedia
         sx={{ height: 300 }}
         image={data.image}
@@ -41,7 +47,7 @@ export default function MediaCard({data}) {
       }}>
         {
           pathname.includes('allproduct') ? <Button onClick={() => dispatch(addToCart(data))} size="small" variant='contained' >Add To Cart</Button> : 
-          <Button onClick={() => dispatch(removeFromCart(data))} size="small" variant='contained' >Remove from Cart</Button>
+          <Button onClick={() => dispatch(removeFromCart(data))} size="small" variant='contained' sx={{background: "#c72828"}} >Remove from Cart</Button>
         }
         <Button size="small" variant='contained'>Wishlist</Button>
       </CardActions>
